@@ -5,25 +5,30 @@
 
 /* ສີແບບ semantic: ປ່ຽນຄ່າຕາມ light/dark */
 :root {
-  --bg: #ffffff;
-  --surface: #f6f7f9;
+  --bg: #f8fbff;
+  --surface: #eef4ff;
   --fg: #0f172a;
-  --muted: #64748b;
-  --border: #e2e8f0;
+  --muted: #526079;
+  --border: #dbe4f3;
   --accent: #2563eb;
   --accent-2: #0891b2;
-  --accent-soft: #eff6ff;
+  --accent-3: #4f46e5;
+  --accent-soft: #e0ecff;
+  --glass: rgb(255 255 255 / 0.65);
 }
 
+/* ໂທນຟ້າ navy: ພື້ນຫຼັງມືດມີສີຟ້າປົນ ບໍ່ແມ່ນດຳລ້ວນ */
 .dark {
-  --bg: #0b0d12;
-  --surface: #141821;
-  --fg: #e5e7eb;
+  --bg: #060b18;
+  --surface: #0d1528;
+  --fg: #e6edf9;
   --muted: #94a3b8;
-  --border: #252b37;
+  --border: #1c2942;
   --accent: #60a5fa;
   --accent-2: #22d3ee;
-  --accent-soft: #172554;
+  --accent-3: #818cf8;
+  --accent-soft: #10244d;
+  --glass: rgb(13 21 40 / 0.6);
 }
 
 /* ລົງທະບຽນເປັນ class ຂອງ Tailwind: bg-bg, text-fg, text-muted, border-border, bg-accent ... */
@@ -36,6 +41,8 @@
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-glass: var(--glass);
 
   /* Inter ບໍ່ມີຕົວອັກສອນລາວ, browser ຈຶ່ງໃຊ້ Noto Sans Lao ແທນອັດຕະໂນມັດ */
   --font-sans: "Inter Variable", "Noto Sans Lao", ui-sans-serif, system-ui, sans-serif;
@@ -111,7 +118,144 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
+/* ຕົວໜັງສືໄລ່ສີຟ້າ → ຟ້າອ່ອນ → ມ່ວງ ເລື່ອນຊ້າໆ */
+.text-gradient {
+  background: linear-gradient(100deg, var(--accent) 0%, var(--accent-2) 35%, var(--accent-3) 65%, var(--accent) 100%);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradient-pan 8s linear infinite;
+}
+
+@keyframes gradient-pan {
+  to { background-position: 200% center; }
+}
+
+/* ການ໌ດແກ້ວ (glassmorphism) */
+.glass {
+  background: var(--glass);
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}
+
+/* ແສງ aurora ພື້ນຫຼັງ: ກ້ອນສີຟ້າມົວໆ ລອຍຊ້າໆ */
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.aurora > span {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+
+.dark .aurora > span { opacity: 0.3; }
+
+@keyframes aurora-drift {
+  33% { transform: translate(6%, -8%) scale(1.1); }
+  66% { transform: translate(-6%, 6%) scale(0.95); }
+  100% { transform: translate(4%, 4%) scale(1.05); }
+}
+
+/* ລາຍຕາຕະລາງທີ່ຈາງລົງຕາມຂອບ */
+.bg-grid-fade {
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 75%);
+}
+
+/* ວົງແຫວນໄລ່ສີໝູນອ້ອມຮູບ */
+.conic-ring {
+  background: conic-gradient(from var(--angle, 0deg), var(--accent), var(--accent-2), var(--accent-3), var(--accent));
+  animation: spin-angle 6s linear infinite;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin-angle {
+  to { --angle: 360deg; }
+}
+
+/* ປຸ່ມຫຼັກ: ແສງວາບຜ່ານເວລາ hover */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 700ms ease;
+}
+
+.btn-shine:hover::after {
+  transform: translateX(120%);
+}
+
+/* ແຖບເລື່ອນຊື່ເທັກໂນໂລຢີ */
+.marquee {
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+
+.marquee-track {
+  animation: marquee 40s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+/* ເຄີເຊີກະພິບຕອນພິມຂໍ້ຄວາມ */
+.caret::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 3px;
+  vertical-align: -0.12em;
+  background: currentColor;
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ລູກສອນ scroll ລົງ */
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 1; }
+  80%, 100% { transform: translateY(12px); opacity: 0; }
+}
+
+.animate-scroll-dot {
+  animation: scroll-dot 1.8s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .animate-float { animation: none; }
+  .animate-float,
+  .text-gradient,
+  .aurora > span,
+  .conic-ring,
+  .marquee-track,
+  .caret::after,
+  .animate-scroll-dot { animation: none; }
+  .btn-shine::after { display: none; }
 }

@@ -55,8 +55,12 @@ export type SkillGroup = {
 };
 
 export type TimelineItem = {
+  /** ເລືອກໄອຄອນ ແລະ ປ້າຍ: ວຽກ ຫຼື ການສຶກສາ */
+  kind: 'work' | 'education';
   period: string;
   title: Localized;
   place: Localized;
   details?: Localized[];
+  /** ປ້າຍເດັ່ນ ເຊັ່ນ ຈົບກຽດນິຍົມ */
+  badge?: Localized;
 };
