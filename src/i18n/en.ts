@@ -9,6 +9,8 @@ export const en = {
     hello: "Hi, I'm",
     downloadCv: 'Download CV',
     contact: 'Contact me',
+    honors: 'Graduated with Honors · CGPA 3.53',
+    degree: 'B.Sc. Software Development, National University of Laos',
   },
   projects: {
     title: 'Projects',
@@ -24,7 +26,6 @@ export const en = {
   },
   experience: {
     title: 'Experience & Education',
-    graduation: 'Graduated with Honors — B.Sc. Software Development, 2026',
   },
   contact: {
     title: 'Contact',

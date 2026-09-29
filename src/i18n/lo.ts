@@ -11,6 +11,8 @@ export const lo: Dict = {
     hello: 'ສະບາຍດີ, ຂ້ອຍຊື່',
     downloadCv: 'ດາວໂຫຼດ CV',
     contact: 'ຕິດຕໍ່ຂ້ອຍ',
+    honors: 'ຈົບກຽດນິຍົມ · CGPA 3.53',
+    degree: 'ປະລິນຍາຕີ ສາຂາພັດທະນາໂປຣແກຣມ, ມະຫາວິທະຍາໄລແຫ່ງຊາດ',
   },
   projects: {
     title: 'ຜົນງານ',
@@ -26,7 +28,6 @@ export const lo: Dict = {
   },
   experience: {
     title: 'ປະສົບການ ແລະ ການສຶກສາ',
-    graduation: 'ຈົບປະລິນຍາຕີ ສາຂາພັດທະນາໂປຣແກຣມ (ຈົບກຽດນິຍົມ), 2026',
   },
   contact: {
     title: 'ຕິດຕໍ່',

@@ -1,4 +1,4 @@
-import { Download, Mail, MapPin } from 'lucide-react';
+import { Download, GraduationCap, Mail, MapPin } from 'lucide-react';
 import { FaFacebook, FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa6';
 import { useLang } from '@/i18n/LanguageContext';
 import { profile } from '@/data/profile';
@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="mx-auto grid max-w-5xl items-center gap-10 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1fr_auto] md:pt-24"
+      className="mx-auto grid max-w-5xl items-center gap-14 px-4 pb-16 pt-12 sm:px-6 md:grid-cols-[1fr_auto] md:pt-24"
     >
       <div>
         <p className="text-muted">{t.hero.hello}</p>
@@ -53,13 +53,26 @@ export function Hero() {
         </div>
       </div>
 
-      <img
-        src={profile.photo}
-        alt={pick(profile.name)}
-        width={240}
-        height={360}
-        className="mx-auto aspect-[2/3] w-48 rounded-2xl object-cover ring-1 ring-border md:w-60"
-      />
+      {/* ຮູບຮັບປະລິນຍາ: ມືຖືຂຶ້ນກ່ອນຊື່ ເພື່ອໃຫ້ເຫັນໃບປະກາດເປັນອັນດັບທຳອິດ */}
+      <figure className="relative order-first mx-auto w-60 sm:w-64 md:order-none md:w-80">
+        <img
+          src={profile.graduationPhoto}
+          alt={`${pick(profile.name)} — ${t.hero.honors}`}
+          width={320}
+          height={480}
+          fetchPriority="high"
+          className="aspect-[2/3] w-full rounded-3xl object-cover shadow-xl ring-1 ring-border"
+        />
+        <figcaption className="absolute -bottom-6 -left-4 flex md:right-6 items-center gap-3 rounded-2xl border border-border bg-bg/90 px-4 py-3 shadow-lg backdrop-blur md:-left-10">
+          <span className="grid size-10 shrink-0 place-items-center rounded-full bg-accent-soft text-accent">
+            <GraduationCap size={20} />
+          </span>
+          <span>
+            <span className="block whitespace-nowrap text-sm font-semibold">{t.hero.honors}</span>
+            <span className="hidden text-xs leading-snug text-muted sm:block">{t.hero.degree}</span>
+          </span>
+        </figcaption>
+      </figure>
     </section>
   );
 }

@@ -7,7 +7,7 @@ import { Section } from '@/components/ui/Section';
 import { ButtonLink, buttonClass } from '@/components/ui/Button';
 
 export function Contact() {
-  const { t } = useLang();
+  const { t, pick } = useLang();
   const [copied, setCopied] = useState(false);
 
   async function copyEmail() {
@@ -23,6 +23,23 @@ export function Contact() {
   return (
     <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle}>
       <div className="rounded-2xl border border-border bg-surface p-6 sm:p-8">
+        <div className="mb-6 flex items-center gap-4">
+          <img
+            src={profile.photo}
+            alt={pick(profile.name)}
+            width={64}
+            height={64}
+            loading="lazy"
+            className="size-16 rounded-full object-cover object-[center_30%] ring-2 ring-accent-soft"
+          />
+          <div>
+            <p className="font-semibold">{pick(profile.name)}</p>
+            <p className="text-sm text-muted">
+              {profile.role} · {pick(profile.location)}
+            </p>
+          </div>
+        </div>
+
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <ButtonLink href={`mailto:${profile.email}`}>
             <Mail size={16} /> {profile.email}

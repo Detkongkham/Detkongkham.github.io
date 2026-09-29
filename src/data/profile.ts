@@ -7,8 +7,9 @@ export const profile: {
   location: Localized;
   email: string;
   phone: string;
+  /** ຮູບທາງການ: avatar ໃນສ່ວນ Contact */
   photo: string;
-  /** ຮູບຮັບປະລິນຍາ: ສະແດງໃນສ່ວນ Experience & Education */
+  /** ຮູບຮັບປະລິນຍາ: ຮູບຫຼັກໃນ Hero */
   graduationPhoto: string;
   cv: string;
   socials: { github: string; facebook?: string; whatsapp?: string; linkedin?: string };
