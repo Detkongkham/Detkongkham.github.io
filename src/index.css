@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* dark: ເຮັດວຽກເມື່ອ <html> ມີ class="dark" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ສີແບບ semantic: ປ່ຽນຄ່າຕາມ light/dark */
+:root {
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --fg: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --accent: #6d28d9;
+  --accent-soft: #ede9fe;
+}
+
+.dark {
+  --bg: #0b0d12;
+  --surface: #141821;
+  --fg: #e5e7eb;
+  --muted: #94a3b8;
+  --border: #252b37;
+  --accent: #a78bfa;
+  --accent-soft: #2e1f5e;
+}
+
+/* ລົງທະບຽນເປັນ class ຂອງ Tailwind: bg-bg, text-fg, text-muted, border-border, bg-accent ... */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+
+  /* Inter ບໍ່ມີຕົວອັກສອນລາວ, browser ຈຶ່ງໃຊ້ Noto Sans Lao ແທນອັດຕະໂນມັດ */
+  --font-sans: "Inter Variable", "Noto Sans Lao", ui-sans-serif, system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* ບໍ່ໃຫ້ Navbar ບັງຫົວຂໍ້ເວລາກົດລິ້ງ */
+}
+
+body {
+  @apply bg-bg text-fg font-sans antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
