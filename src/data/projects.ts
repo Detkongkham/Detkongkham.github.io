@@ -61,10 +61,33 @@ export const projects: Project[] = [
       en: 'Graduation project — a desktop app for managing sales and repair services at a car repair shop.',
       lo: 'ໂຄງການຈົບຊັ້ນ: ລະບົບຈັດການການຂາຍ ແລະ ບໍລິການຮ້ານແປງລົດໃຫຍ່ (Desktop app)',
     },
-    highlights: [],
+    highlights: [
+      {
+        en: 'Parts sales (POS) with product catalog, stock levels and low-stock alerts',
+        lo: 'ຂາຍອາໄຫຼ່ (POS) ພ້ອມລາຍການສິນຄ້າ, ຈຳນວນຄົງເຫຼືອ ແລະ ແຈ້ງເຕືອນອາໄຫຼ່ໃກ້ໝົດ',
+      },
+      {
+        en: 'Repair orders tracked by customer, vehicle and status',
+        lo: 'ຕິດຕາມລາຍການສ້ອມແປງຕາມລູກຄ້າ, ລົດ ແລະ ສະຖານະ',
+      },
+      {
+        en: 'Payments by cash or bank transfer (LAO QR), with printed receipts',
+        lo: 'ຊຳລະດ້ວຍເງິນສົດ ຫຼື ເງິນໂອນ (LAO QR) ແລະ ພິມໃບບິນ',
+      },
+      {
+        en: 'Dashboard and reports: revenue, best-selling parts, stock and services',
+        lo: 'Dashboard ແລະ ລາຍງານ: ລາຍຮັບ, ອາໄຫຼ່ຂາຍດີ, ສາງ ແລະ ບໍລິການ',
+      },
+    ],
     role: 'Full-Stack Developer & UI/UX Designer',
     stack: ['C#', 'SQL Server', 'Figma'],
-    images: ['/images/projects/garage/cover.webp'],
+    // ຮູບອື່ນທີ່ມີໃຫ້ເລືອກ: reports, receipt
+    images: [
+      '/images/projects/garage/dashboard.webp',
+      '/images/projects/garage/sales.webp',
+      '/images/projects/garage/repairs.webp',
+      '/images/projects/garage/payment.webp',
+    ],
   },
   {
     slug: 'drinks',

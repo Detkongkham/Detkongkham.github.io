@@ -48,15 +48,15 @@ export function ProjectCard({ project, featured = false }: Props) {
           ))}
         </div>
 
-        {featured && gallery.length > 0 && (
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {gallery.length > 0 && (
+          <div className={`mt-6 grid gap-3 ${featured ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-3'}`}>
             {gallery.map((src, i) => (
               <img
                 key={src}
                 src={src}
                 alt={`${project.title} screenshot ${i + 2}`}
                 loading="lazy"
-                className="h-44 w-full rounded-lg border border-border bg-bg object-contain"
+                className={`w-full rounded-lg border border-border bg-bg object-contain ${featured ? 'h-44' : 'h-24'}`}
               />
             ))}
           </div>
