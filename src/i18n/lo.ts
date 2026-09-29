@@ -26,6 +26,7 @@ export const lo: Dict = {
   },
   experience: {
     title: 'ປະສົບການ ແລະ ການສຶກສາ',
+    graduation: 'ຈົບປະລິນຍາຕີ ສາຂາພັດທະນາໂປຣແກຣມ (ຈົບກຽດນິຍົມ), 2026',
   },
   contact: {
     title: 'ຕິດຕໍ່',

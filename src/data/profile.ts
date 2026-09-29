@@ -8,6 +8,8 @@ export const profile: {
   email: string;
   phone: string;
   photo: string;
+  /** ຮູບຮັບປະລິນຍາ: ສະແດງໃນສ່ວນ Experience & Education */
+  graduationPhoto: string;
   cv: string;
   socials: { github: string; facebook?: string; whatsapp?: string; linkedin?: string };
 } = {
@@ -21,6 +23,7 @@ export const profile: {
   email: 'tavisisombath@gmail.com',
   phone: '+856 20 56468254',
   photo: '/images/profile.webp',
+  graduationPhoto: '/images/graduation.webp',
   cv: '/cv-detkongkham.pdf',
   socials: {
     github: 'https://github.com/Detkongkham',

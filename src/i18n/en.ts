@@ -24,6 +24,7 @@ export const en = {
   },
   experience: {
     title: 'Experience & Education',
+    graduation: 'Graduated with Honors — B.Sc. Software Development, 2026',
   },
   contact: {
     title: 'Contact',
