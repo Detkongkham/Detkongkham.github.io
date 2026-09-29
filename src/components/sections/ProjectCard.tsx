@@ -41,7 +41,7 @@ export function ProjectCard({ project, featured = false }: Props) {
             src={cover}
             alt={`${project.title} screenshot`}
             loading="lazy"
-            className="aspect-video w-full object-cover transition hover:opacity-90"
+            className="aspect-video w-full object-cover object-top transition hover:opacity-90"
           />
         </button>
       )}

@@ -105,9 +105,32 @@ export const projects: Project[] = [
       en: 'A mobile app for selling beverages, with a Node.js REST API backend.',
       lo: 'ແອັບມືຖືສຳລັບຂາຍເຄື່ອງດື່ມປະເພດນ້ຳ ພ້ອມ REST API ດ້ວຍ Node.js',
     },
-    highlights: [],
+    highlights: [
+      {
+        en: 'Customer menu with categories, search, cart and promotional pricing',
+        lo: 'ເມນູສຳລັບລູກຄ້າ: ແຍກປະເພດ, ຄົ້ນຫາ, ກະຕ່າສິນຄ້າ ແລະ ລາຄາໂປຣໂມຊັ່ນ',
+      },
+      {
+        en: 'Staff order workflow: accept or cancel pending orders, order history and reorder',
+        lo: 'ຈັດການອໍເດີ້ສຳລັບພະນັກງານ: ຢືນຢັນ ຫຼື ຍົກເລີກອໍເດີ້, ປະຫວັດການສັ່ງຊື້ ແລະ ສັ່ງຊື້ຄືນ',
+      },
+      {
+        en: 'Promotions with percentage discounts and date ranges',
+        lo: 'ໂປຣໂມຊັ່ນ: ສ່ວນຫຼຸດເປັນເປີເຊັນ ພ້ອມກຳນົດຊ່ວງວັນທີ',
+      },
+      {
+        en: 'Admin management for products, categories, sizes, users and roles',
+        lo: 'ຈັດການຂໍ້ມູນພື້ນຖານ: ສິນຄ້າ, ປະເພດ, ຂະໜາດ, ຜູ້ໃຊ້ ແລະ ຕຳແໜ່ງ',
+      },
+    ],
     role: 'Full-Stack Developer',
     stack: ['Flutter', 'Node.js', 'Express', 'MySQL'],
-    images: ['/images/projects/drinks/cover.webp'],
+    images: [
+      '/images/projects/drinks/menu.webp',
+      '/images/projects/drinks/admin-menu.webp',
+      '/images/projects/drinks/pending-orders.webp',
+      '/images/projects/drinks/products.webp',
+    ],
+    moreImages: ['/images/projects/drinks/promotions.webp', '/images/projects/drinks/cancelled-orders.webp'],
   },
 ];
