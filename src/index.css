@@ -10,8 +10,9 @@
   --fg: #0f172a;
   --muted: #64748b;
   --border: #e2e8f0;
-  --accent: #6d28d9;
-  --accent-soft: #ede9fe;
+  --accent: #2563eb;
+  --accent-2: #0891b2;
+  --accent-soft: #eff6ff;
 }
 
 .dark {
@@ -20,8 +21,9 @@
   --fg: #e5e7eb;
   --muted: #94a3b8;
   --border: #252b37;
-  --accent: #a78bfa;
-  --accent-soft: #2e1f5e;
+  --accent: #60a5fa;
+  --accent-2: #22d3ee;
+  --accent-soft: #172554;
 }
 
 /* ລົງທະບຽນເປັນ class ຂອງ Tailwind: bg-bg, text-fg, text-muted, border-border, bg-accent ... */
@@ -33,6 +35,7 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-2: var(--accent-2);
 
   /* Inter ບໍ່ມີຕົວອັກສອນລາວ, browser ຈຶ່ງໃຊ້ Noto Sans Lao ແທນອັດຕະໂນມັດ */
   --font-sans: "Inter Variable", "Noto Sans Lao", ui-sans-serif, system-ui, sans-serif;
@@ -47,6 +50,68 @@ body {
   @apply bg-bg text-fg font-sans antialiased;
 }
 
+/* ລາຍຕາຕະລາງຈາງໆ ສຳລັບພື້ນຫຼັງ */
+.bg-grid {
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ແສງຕາມເມົ້າ + ຂອບໄລ່ສີ: JS ຕັ້ງຄ່າ --mx, --my ຕອນເລື່ອນເມົ້າ */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.spotlight::before,
+.spotlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.spotlight::before {
+  z-index: -1;
+  background: radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%),
+      color-mix(in oklab, var(--accent) 10%, transparent), transparent 45%);
+}
+
+.spotlight::after {
+  z-index: 1;
+  padding: 1px;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%),
+      var(--accent), color-mix(in oklab, var(--accent-2, var(--accent)) 60%, transparent) 30%, transparent 60%);
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+.spotlight:hover::before,
+.spotlight:hover::after {
+  opacity: 1;
+}
+
+/* ການ໌ດໂປຣເຈັກເດັ່ນ: ຂອບໄລ່ສີຟ້າຕະຫຼອດ + ພື້ນຟ້າອ່ອນ + ແສງເງົາ */
+.featured-card {
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(135deg, color-mix(in oklab, var(--accent-soft) 85%, var(--surface)), var(--surface) 60%) padding-box,
+    linear-gradient(135deg, var(--accent), var(--accent-2, var(--accent)) 45%, color-mix(in oklab, var(--accent) 20%, transparent)) border-box;
+  box-shadow: 0 40px 90px -40px color-mix(in oklab, var(--accent) 55%, transparent);
+}
+
+@keyframes float {
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .animate-float { animation: none; }
 }
