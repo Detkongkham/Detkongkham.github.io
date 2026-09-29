@@ -98,7 +98,7 @@ export function Navbar() {
       >
         <a
           href="#top"
-          aria-label={t.nav.home}
+          title={t.nav.home}
           className="group flex items-center gap-2 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
         >
           <span className="relative grid size-9 place-items-center rounded-full bg-linear-to-br from-accent to-accent-3 text-sm font-bold text-bg shadow-md shadow-accent/30 transition group-hover:rotate-[-8deg] group-hover:scale-105">
@@ -108,6 +108,7 @@ export function Navbar() {
           <span className="hidden text-sm font-semibold leading-tight lg:block">
             Detkongkham<span className="text-accent">.</span>
           </span>
+          <span className="sr-only">{t.nav.home}</span>
         </a>
 
         <ul className="hidden items-center gap-1 text-sm md:flex">

@@ -17,6 +17,9 @@ function trackPointer(e: PointerEvent<HTMLElement>) {
   e.currentTarget.style.setProperty('--my', `${e.clientY - r.top}px`);
 }
 
+/** ຮູບຂະໜາດນ້ອຍ (-sm.webp) ສຳລັບການ໌ດ; ຮູບເຕັມໃຊ້ໃນ Lightbox */
+const small = (src: string) => src.replace(/\.webp$/, '-sm.webp');
+
 const focusRing = 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent';
 
 /** ກອບໜ້າຕ່າງໂປຣແກຣມ ສຳລັບຮູບປົກ */
@@ -77,7 +80,9 @@ export function ProjectCard({ project, index, featured = false }: Props) {
             className={`group/cover relative block w-full cursor-zoom-in overflow-hidden ${focusRing}`}
           >
             <img
-              src={cover}
+              src={small(cover)}
+              srcSet={`${small(cover)} 640w, ${cover} 1600w`}
+              sizes="(min-width: 1024px) 640px, 100vw"
               alt={`${project.title} screenshot`}
               loading="lazy"
               className="aspect-video w-full object-cover object-top transition duration-500 motion-safe:group-hover/cover:scale-[1.03]"
@@ -101,7 +106,7 @@ export function ProjectCard({ project, index, featured = false }: Props) {
           <span className="motion-safe:animate-float relative block rounded-[1.4rem] border-[3px] border-fg bg-fg p-0.5 shadow-2xl shadow-accent/30">
             <span aria-hidden="true" className="absolute top-2 left-1/2 z-10 h-1.5 w-6 -translate-x-1/2 rounded-full bg-fg" />
             <img
-              src={project.phoneCover}
+              src={small(project.phoneCover ?? '')}
               alt=""
               loading="lazy"
               className="aspect-[9/19.5] w-full rounded-[1.1rem] object-cover object-top"
@@ -130,7 +135,7 @@ export function ProjectCard({ project, index, featured = false }: Props) {
             className={`group/thumb relative shrink-0 cursor-zoom-in snap-start overflow-hidden rounded-lg border border-border bg-surface transition duration-200 hover:border-accent/60 hover:shadow-md hover:shadow-accent/10 ${focusRing} ${featured ? 'h-24 w-40' : 'aspect-video'}`}
           >
             <img
-              src={src}
+              src={small(src)}
               alt={`${project.title} screenshot ${i + 2}`}
               loading="lazy"
               className="size-full object-contain transition duration-300 motion-safe:group-hover/thumb:scale-105"
