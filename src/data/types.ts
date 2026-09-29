@@ -12,6 +12,8 @@ export type Project = {
   stack: string[];
   /** ຮູບທຳອິດ = ຮູບປົກ */
   images: string[];
+  /** ຮູບເພີ່ມເຕີມ: ບໍ່ສະແດງໃນການ໌ດ, ເບິ່ງໄດ້ໃນ Lightbox ເທົ່ານັ້ນ */
+  moreImages?: string[];
   links?: {
     /** ລິ້ງ YouTube, ມີຫຼາຍອັນຈະສະແດງເປັນປຸ່ມ 1, 2, 3 */
     videos?: string[];

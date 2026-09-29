@@ -1,9 +1,12 @@
-import { Check, PlayCircle } from 'lucide-react';
+import { lazy, Suspense, useState } from 'react';
+import { Check, Images, PlayCircle } from 'lucide-react';
 import { FaGithub } from 'react-icons/fa6';
 import type { Project } from '@/data/types';
 import { useLang } from '@/i18n/LanguageContext';
 import { Badge } from '@/components/ui/Badge';
 import { ButtonLink } from '@/components/ui/Button';
+
+const Gallery = lazy(() => import('@/components/ui/Gallery'));
 
 type Props = { project: Project; featured?: boolean };
 
@@ -12,15 +15,35 @@ export function ProjectCard({ project, featured = false }: Props) {
   const [cover, ...gallery] = project.images;
   const videos = project.links?.videos ?? [];
 
+  // Lightbox ເລື່ອນເບິ່ງໄດ້ທັງຮູບໃນການ໌ດ ແລະ moreImages
+  const slides = [...project.images, ...(project.moreImages ?? [])].map((src, i) => ({
+    src,
+    alt: `${project.title} screenshot ${i + 1}`,
+  }));
+  const [openAt, setOpenAt] = useState(-1);
+  const [loaded, setLoaded] = useState(false);
+
+  function open(i: number) {
+    setLoaded(true);
+    setOpenAt(i);
+  }
+
   return (
     <article className="overflow-hidden rounded-2xl border border-border bg-surface">
       {cover && (
-        <img
-          src={cover}
-          alt={`${project.title} screenshot`}
-          loading="lazy"
-          className="aspect-video w-full border-b border-border object-cover"
-        />
+        <button
+          type="button"
+          onClick={() => open(0)}
+          aria-label={`${t.projects.viewAll}: ${project.title}`}
+          className="block w-full cursor-zoom-in border-b border-border"
+        >
+          <img
+            src={cover}
+            alt={`${project.title} screenshot`}
+            loading="lazy"
+            className="aspect-video w-full object-cover transition hover:opacity-90"
+          />
+        </button>
       )}
 
       <div className="p-6">
@@ -51,15 +74,31 @@ export function ProjectCard({ project, featured = false }: Props) {
         {gallery.length > 0 && (
           <div className={`mt-6 grid gap-3 ${featured ? 'grid-cols-2 sm:grid-cols-4' : 'grid-cols-3'}`}>
             {gallery.map((src, i) => (
-              <img
+              <button
                 key={src}
-                src={src}
-                alt={`${project.title} screenshot ${i + 2}`}
-                loading="lazy"
-                className={`w-full rounded-lg border border-border bg-bg object-contain ${featured ? 'h-44' : 'h-24'}`}
-              />
+                type="button"
+                onClick={() => open(i + 1)}
+                className="cursor-zoom-in rounded-lg transition hover:opacity-80 focus-visible:outline-2 focus-visible:outline-accent"
+              >
+                <img
+                  src={src}
+                  alt={`${project.title} screenshot ${i + 2}`}
+                  loading="lazy"
+                  className={`w-full rounded-lg border border-border bg-bg object-contain ${featured ? 'h-44' : 'h-24'}`}
+                />
+              </button>
             ))}
           </div>
+        )}
+
+        {slides.length > 1 && (
+          <button
+            type="button"
+            onClick={() => open(0)}
+            className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline"
+          >
+            <Images size={16} /> {t.projects.viewAll} ({slides.length})
+          </button>
         )}
 
         {(videos.length > 0 || project.links?.github) && (
@@ -80,6 +119,12 @@ export function ProjectCard({ project, featured = false }: Props) {
 
         {project.privateSource && <p className="mt-3 text-xs text-muted">{t.projects.privateNote}</p>}
       </div>
+
+      {loaded && (
+        <Suspense fallback={null}>
+          <Gallery slides={slides} index={openAt} onClose={() => setOpenAt(-1)} />
+        </Suspense>
+      )}
     </article>
   );
 }

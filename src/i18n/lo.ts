@@ -21,6 +21,7 @@ export const lo: Dict = {
     role: 'ໜ້າທີ່',
     watchDemo: 'ເບິ່ງວິດີໂອ',
     viewGithub: 'ເບິ່ງໃນ GitHub',
+    viewAll: 'ເບິ່ງຮູບທັງໝົດ',
     privateNote: 'Source code ເປັນ private ສາມາດສະແດງໄດ້ເມື່ອຮ້ອງຂໍ',
   },
   skills: {

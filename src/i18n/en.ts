@@ -19,6 +19,7 @@ export const en = {
     role: 'Role',
     watchDemo: 'Watch demo',
     viewGithub: 'View on GitHub',
+    viewAll: 'View all screenshots',
     privateNote: 'Source code is private — available on request.',
   },
   skills: {

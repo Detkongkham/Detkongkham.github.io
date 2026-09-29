@@ -32,7 +32,6 @@ export const projects: Project[] = [
     ],
     role: 'Full-Stack Developer & UI/UX Designer',
     stack: ['TypeScript', 'React', 'React Native (Expo)', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Redis', 'Socket.IO', 'Tailwind CSS', 'Docker'],
-    // ຮູບອື່ນທີ່ມີໃຫ້ເລືອກ: web/login, reports, system-map · mobile/login, appointments, services, booking-service, profile
     images: [
       '/images/projects/aura/web/dashboard.webp',
       '/images/projects/aura/web/appointments.webp',
@@ -43,6 +42,16 @@ export const projects: Project[] = [
       '/images/projects/aura/mobile/home.webp',
       '/images/projects/aura/mobile/booking-time.webp',
       '/images/projects/aura/mobile/booking-success.webp',
+    ],
+    moreImages: [
+      '/images/projects/aura/web/login.webp',
+      '/images/projects/aura/web/reports.webp',
+      '/images/projects/aura/web/system-map.webp',
+      '/images/projects/aura/mobile/login.webp',
+      '/images/projects/aura/mobile/appointments.webp',
+      '/images/projects/aura/mobile/services.webp',
+      '/images/projects/aura/mobile/booking-service.webp',
+      '/images/projects/aura/mobile/profile.webp',
     ],
     links: {
       videos: [
@@ -81,13 +90,13 @@ export const projects: Project[] = [
     ],
     role: 'Full-Stack Developer & UI/UX Designer',
     stack: ['C#', 'SQL Server', 'Figma'],
-    // ຮູບອື່ນທີ່ມີໃຫ້ເລືອກ: reports, receipt
     images: [
       '/images/projects/garage/dashboard.webp',
       '/images/projects/garage/sales.webp',
       '/images/projects/garage/repairs.webp',
       '/images/projects/garage/payment.webp',
     ],
+    moreImages: ['/images/projects/garage/reports.webp', '/images/projects/garage/receipt.webp'],
   },
   {
     slug: 'drinks',
