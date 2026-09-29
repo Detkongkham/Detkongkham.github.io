@@ -32,12 +32,17 @@ export const projects: Project[] = [
     ],
     role: 'Full-Stack Developer & UI/UX Designer',
     stack: ['TypeScript', 'React', 'React Native (Expo)', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Redis', 'Socket.IO', 'Tailwind CSS', 'Docker'],
+    // ຮູບອື່ນທີ່ມີໃຫ້ເລືອກ: web/login, reports, system-map · mobile/login, appointments, services, booking-service, profile
     images: [
-      '/images/projects/aura/dashboard.webp',
-      '/images/projects/aura/appointments.webp',
-      '/images/projects/aura/home-mobile.webp',
-      '/images/projects/aura/booking-mobile.webp',
-      '/images/projects/aura/tracking-mobile.webp',
+      '/images/projects/aura/web/dashboard.webp',
+      '/images/projects/aura/web/appointments.webp',
+      '/images/projects/aura/web/queue.webp',
+      '/images/projects/aura/web/branches.webp',
+      '/images/projects/aura/web/chat.webp',
+      '/images/projects/aura/mobile/welcome.webp',
+      '/images/projects/aura/mobile/home.webp',
+      '/images/projects/aura/mobile/booking-time.webp',
+      '/images/projects/aura/mobile/booking-success.webp',
     ],
     links: {
       videos: [
