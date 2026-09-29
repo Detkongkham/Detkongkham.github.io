@@ -57,8 +57,8 @@ export function Hero() {
         src={profile.photo}
         alt={pick(profile.name)}
         width={240}
-        height={240}
-        className="mx-auto size-48 rounded-2xl object-cover ring-1 ring-border md:size-60"
+        height={360}
+        className="mx-auto aspect-[2/3] w-48 rounded-2xl object-cover ring-1 ring-border md:w-60"
       />
     </section>
   );
