@@ -1,8 +1,8 @@
 # Detkongkham Soukchaleune — Portfolio
 
-**Live:** https://detkongkham.vercel.app
+**Live:** https://detkongkham.github.io · [Vercel mirror](https://detkongkham.vercel.app)
 
-[![Portfolio preview](public/og-image.png)](https://detkongkham.vercel.app)
+[![Portfolio preview](public/og-image.png)](https://detkongkham.github.io)
 
 Personal portfolio of a Full-Stack Developer from Vientiane, Laos. It is a bilingual (English / Lao) single-page site with dark mode, and it works on phones as well as desktops.
 
@@ -47,4 +47,4 @@ pnpm build     # type-check and build to dist/
 pnpm preview   # serve the build at http://localhost:4173
 ```
 
-Every push to `main` is deployed to Vercel automatically.
+Every push to `main` is deployed to **GitHub Pages** and **Vercel** automatically.

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://detkongkham.vercel.app/sitemap.xml
+Sitemap: https://detkongkham.github.io/sitemap.xml
